@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="youlexuan-shop-web:war">
+    <output-path>$PROJECT_DIR$/youlexuan-shop-web/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>youlexuan-shop-web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="youlexuan-shop-web-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="youlexuan-shop-web:war exploded" />
+    </root>
+  </artifact>
+</component>
