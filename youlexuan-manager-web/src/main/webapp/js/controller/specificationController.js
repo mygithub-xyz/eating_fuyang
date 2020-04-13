@@ -1,5 +1,5 @@
  //控制层 
-app.controller('specificationController' ,function($scope,$controller   ,specificationService){	
+app.controller('specificationController' ,function($scope,$controller,specificationService){
 	
 	$controller('baseController',{$scope:$scope});//继承
 	
@@ -37,7 +37,7 @@ app.controller('specificationController' ,function($scope,$controller   ,specifi
 		if($scope.entity.specification.id!=null){//如果有ID
 			serviceObject=specificationService.update( $scope.entity ); //修改
 		}else{
-            if ($scope.entity.specification.option_name!=null&&$scope.entity.specificationOptionList.length>0){
+            if ($scope.entity.specification.specName!=null){
                 serviceObject=specificationService.add( $scope.entity  );//增加
         }else{
             alert("请先填写规格信息，再添加！")

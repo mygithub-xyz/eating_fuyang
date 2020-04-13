@@ -1,5 +1,5 @@
  //控制层 
-app.controller('addressController' ,function($scope,$controller   ,addressService){	
+app.controller('addressController' ,function($scope,$controller,addressService){
 	
 	$controller('baseController',{$scope:$scope});//继承
 	

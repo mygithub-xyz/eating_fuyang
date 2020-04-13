@@ -5,6 +5,7 @@ import com.offcn.group.Specification;
 import com.offcn.pojo.TbSpecification;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 服务层接口
@@ -36,7 +37,7 @@ public interface SpecificationService {
 	/**
 	 * 修改
 	 */
-	public void update(TbSpecification specification);
+	public void update(Specification specification);
 
 
 	/**
@@ -44,7 +45,7 @@ public interface SpecificationService {
 	 * @param id
 	 * @return
 	 */
-	public TbSpecification findOne(Long id);
+	public Specification findOne(Long id);
 
 
 	/**
@@ -60,5 +61,9 @@ public interface SpecificationService {
 	 * @return
 	 */
 	public PageResult findPage(TbSpecification specification, int pageNum, int pageSize);
-	
+
+    /**
+     * 品牌下拉框数据
+     */
+    List<Map> selectOptionList();
 }

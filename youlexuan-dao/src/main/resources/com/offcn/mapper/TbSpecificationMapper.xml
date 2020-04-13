@@ -123,6 +123,9 @@
       </if>
     </trim>
   </insert>
+    <select id="selectOptionList"  resultType="java.util.Map" >
+    select id,spec_name as text from tb_specification
+  </select>
   <select id="countByExample" parameterType="com.offcn.pojo.TbSpecificationExample" resultType="java.lang.Integer" >
     select count(*) from tb_specification
     <if test="_parameter != null" >

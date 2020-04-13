@@ -42,7 +42,7 @@ app.controller('brandController', function ($scope,$controller, brandService) {/
                             alert(response.message);
                         }
                     }
-                );
+                )
             }else {
                 alert("请输入添加的品牌吧！！！")
             }

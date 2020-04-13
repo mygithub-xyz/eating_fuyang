@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * controller
@@ -65,7 +66,7 @@ public class SpecificationController {
 	 * @return
 	 */
 	@RequestMapping("/update")
-	public Result update(@RequestBody TbSpecification specification){
+	public Result update(@RequestBody Specification specification){
 		try {
 			specificationService.update(specification);
 			return new Result(true, "修改成功");
@@ -81,7 +82,7 @@ public class SpecificationController {
 	 * @return
 	 */
 	@RequestMapping("/findOne")
-	public TbSpecification findOne(Long id){
+	public Specification findOne(Long id){
 		return specificationService.findOne(id);		
 	}
 	
@@ -103,7 +104,7 @@ public class SpecificationController {
 	
 		/**
 	 * 查询+分页
-	 * @param brand
+	 * @param specification
 	 * @param page
 	 * @param rows
 	 * @return
@@ -112,5 +113,9 @@ public class SpecificationController {
 	public PageResult search(@RequestBody TbSpecification specification, int page, int rows  ){
 		return specificationService.findPage(specification, page, rows);		
 	}
-	
+    @RequestMapping("/selectOptionList")
+    public List<Map> selectOptionList(){
+        return specificationService.selectOptionList();
+    }
+
 }

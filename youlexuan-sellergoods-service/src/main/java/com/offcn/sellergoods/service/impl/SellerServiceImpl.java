@@ -11,6 +11,7 @@ import com.offcn.pojo.TbSellerExample.Criteria;
 import com.offcn.sellergoods.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,7 +48,9 @@ public class SellerServiceImpl implements SellerService {
 	 */
 	@Override
 	public void add(TbSeller seller) {
-		sellerMapper.insert(seller);		
+            seller.setStatus("0");
+            seller.setCreateTime(new Date());
+            sellerMapper.insert(seller);
 	}
 
 	
@@ -61,7 +64,7 @@ public class SellerServiceImpl implements SellerService {
 	
 	/**
 	 * 根据ID获取实体
-	 * @param id
+	 * @param sellerId
 	 * @return
 	 */
 	@Override
@@ -136,5 +139,12 @@ public class SellerServiceImpl implements SellerService {
 		Page<TbSeller> page= (Page<TbSeller>)sellerMapper.selectByExample(example);
 		return new PageResult(page.getTotal(), page.getResult());
 	}
-	
+   /*审核*/
+    @Override
+    public void updateStatus(String sellerId, String status) {
+        TbSeller tbSeller = sellerMapper.selectByPrimaryKey(sellerId);
+        tbSeller.setStatus(status);
+        sellerMapper.updateByPrimaryKey(tbSeller);
+    }
+
 }

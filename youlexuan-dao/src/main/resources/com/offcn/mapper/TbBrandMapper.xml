@@ -129,6 +129,11 @@
       </if>
     </trim>
   </insert>
+
+    <select id="selectOptionList"  resultType="java.util.Map" >
+    select id,name as text from tb_brand
+    </select>
+
   <select id="countByExample" parameterType="com.offcn.pojo.TbBrandExample" resultType="java.lang.Integer" >
     select count(*) from tb_brand
     <if test="_parameter != null" >
@@ -179,4 +184,5 @@
       first_char = #{firstChar,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
 </mapper>

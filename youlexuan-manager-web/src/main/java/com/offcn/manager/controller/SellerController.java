@@ -76,7 +76,7 @@ public class SellerController {
 	
 	/**
 	 * 获取实体
-	 * @param id
+	 * @param sellerId
 	 * @return
 	 */
 	@RequestMapping("/findOne")
@@ -86,7 +86,7 @@ public class SellerController {
 	
 	/**
 	 * 批量删除
-	 * @param ids
+	 * @param sellerIds
 	 * @return
 	 */
 	@RequestMapping("/delete")
@@ -102,7 +102,7 @@ public class SellerController {
 	
 		/**
 	 * 查询+分页
-	 * @param brand
+	 * @param seller
 	 * @param page
 	 * @param rows
 	 * @return
@@ -111,5 +111,18 @@ public class SellerController {
 	public PageResult search(@RequestBody TbSeller seller, int page, int rows  ){
 		return sellerService.findPage(seller, page, rows);		
 	}
-	
+	/*
+	* 审核状态改变
+	*
+	*/
+    @RequestMapping("/updateStatus")
+    public Result updateStatus(String sellerId,String status){
+        try {
+            sellerService.updateStatus(sellerId,status);
+            return new Result(true, "审核通过");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "审核失败");
+        }
+    }
 }

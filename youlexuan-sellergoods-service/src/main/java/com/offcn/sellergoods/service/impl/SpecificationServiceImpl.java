@@ -16,6 +16,7 @@ import com.offcn.sellergoods.service.SpecificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 服务实现层
@@ -69,8 +70,25 @@ public class SpecificationServiceImpl implements SpecificationService {
 	 * 修改
 	 */
 	@Override
-	public void update(TbSpecification specification){
-		specificationMapper.updateByPrimaryKey(specification);
+	public void update(Specification specification){
+        //修改规格
+        specificationMapper.updateByPrimaryKey(specification.getSpecification());
+        /**
+         * 修改规格项（一对多）
+         * 先删除，在添加
+         */
+        //删除
+        Long id =specification.getSpecification().getId();
+        TbSpecificationOptionExample example =new TbSpecificationOptionExample();
+        TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
+        criteria.andSpecIdEqualTo(id);
+        tbSpecificationOptionMapper.deleteByExample(example);
+        //添加
+        List<TbSpecificationOption> specificationOptionList = specification.getSpecificationOptionList();
+        for (TbSpecificationOption tbSpecificationOption : specificationOptionList) {
+            tbSpecificationOption.setSpecId(id);
+            tbSpecificationOptionMapper.insert(tbSpecificationOption);
+        }
 	}	
 	
 	/**
@@ -79,8 +97,16 @@ public class SpecificationServiceImpl implements SpecificationService {
 	 * @return
 	 */
 	@Override
-	public TbSpecification findOne(Long id){
-		return specificationMapper.selectByPrimaryKey(id);
+	public Specification findOne(Long id){
+	    //根据id查询规格
+	    Specification specification =new Specification();
+	    specification.setSpecification(specificationMapper.selectByPrimaryKey(id));
+	    //根据规格id查询规格项
+        TbSpecificationOptionExample example = new TbSpecificationOptionExample();//表
+        TbSpecificationOptionExample.Criteria criteria = example.createCriteria();//where
+        criteria.andSpecIdEqualTo(id);//条件
+        specification.setSpecificationOptionList(tbSpecificationOptionMapper.selectByExample(example));
+		return specification;
 	}
 
 	/**
@@ -116,5 +142,13 @@ public class SpecificationServiceImpl implements SpecificationService {
 		Page<TbSpecification> page= (Page<TbSpecification>)specificationMapper.selectByExample(example);
 		return new PageResult(page.getTotal(), page.getResult());
 	}
-	
+
+    /**
+     * 列表数据
+     */
+    @Override
+    public List<Map> selectOptionList() {
+        return specificationMapper.selectOptionList();
+    }
+
 }

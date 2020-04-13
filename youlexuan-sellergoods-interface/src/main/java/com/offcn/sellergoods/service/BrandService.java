@@ -4,6 +4,7 @@ import com.offcn.entity.PageResult;
 import com.offcn.pojo.TbBrand;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 品牌接口
@@ -44,4 +45,6 @@ public interface BrandService {
      * 根据条件分页查询
      */
     public PageResult findPage(TbBrand brand, int pageNo, int pageSize);
+
+    List<Map> selectOptionList();
 }
