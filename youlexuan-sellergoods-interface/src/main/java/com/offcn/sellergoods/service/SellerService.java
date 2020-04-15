@@ -40,7 +40,7 @@ public interface SellerService {
 
 	/**
 	 * 根据ID获取实体
-	 * @param id
+	 * @param sellerId
 	 * @return
 	 */
 	public TbSeller findOne(String sellerId);
@@ -48,7 +48,7 @@ public interface SellerService {
 
 	/**
 	 * 批量删除
-	 * @param ids
+	 * @param sellerIds
 	 */
 	public void delete(String[] sellerIds);
 

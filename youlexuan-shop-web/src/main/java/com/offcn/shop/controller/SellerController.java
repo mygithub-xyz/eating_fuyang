@@ -5,6 +5,7 @@ import com.offcn.entity.PageResult;
 import com.offcn.entity.Result;
 import com.offcn.pojo.TbSeller;
 import com.offcn.sellergoods.service.SellerService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,6 +51,10 @@ public class SellerController {
 	@RequestMapping("/add")
 	public Result add(@RequestBody TbSeller seller){
 		try {
+            //密码加密
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            String password = passwordEncoder.encode(seller.getPassword());
+            seller.setPassword(password);
 			sellerService.add(seller);
 			return new Result(true, "增加成功");
 		} catch (Exception e) {
@@ -76,7 +81,7 @@ public class SellerController {
 	
 	/**
 	 * 获取实体
-	 * @param id
+	 * @param sellerId
 	 * @return
 	 */
 	@RequestMapping("/findOne")
@@ -86,7 +91,7 @@ public class SellerController {
 	
 	/**
 	 * 批量删除
-	 * @param ids
+	 * @param sellerIds
 	 * @return
 	 */
 	@RequestMapping("/delete")
@@ -102,7 +107,7 @@ public class SellerController {
 	
 		/**
 	 * 查询+分页
-	 * @param brand
+	 * @param seller
 	 * @param page
 	 * @param rows
 	 * @return

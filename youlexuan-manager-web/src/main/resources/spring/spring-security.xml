@@ -7,7 +7,6 @@
     <http pattern="/favicon.ico" security="none"/>
     <!-- 以下页面不被拦截 -->
     <http pattern="/login.html" security="none"></http>
-    <http pattern="/logout.html" security="none"></http>
     <http pattern="/css/**" security="none"></http>
     <http pattern="/img/**" security="none"></http>
     <http pattern="/js/**" security="none"></http>
@@ -26,7 +25,7 @@
         <!-- 配置退出-->
         <!-- 自定义退出的请求地址 logout-url="/quit"-->
         <!-- 自定义退出地址logout-success-url="/logout.html"-->
-        <logout logout-success-url="/logout.html"/>
+        <logout/>
     </http>
 
     <!-- 认证管理器 -->
