@@ -46,7 +46,7 @@
     </beans:bean>
 
     <!-- 配置dubbo远程引用商家服务实现-->
-    <dubbo:registry address="zookeeper://192.168.220.128:2181"/>
+    <dubbo:registry address="zookeeper://192.168.188.128:2181"/>
     <dubbo:application name="youlexuan-shop-web"/>
     <!-- 引用远程商家服务-->
     <dubbo:reference id="sellerService" interface="com.offcn.sellergoods.service.SellerService"/>
