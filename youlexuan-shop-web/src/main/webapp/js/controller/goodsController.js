@@ -58,7 +58,8 @@ app.controller('goodsController' ,function($scope,$controller,goodsService,uploa
             function(response){
                 if(response.success){
                     alert('保存成功');
-                    $scope.entity={};
+                   // $scope.entity={};
+                    $scope.entity={ goodsDesc:{itemImages:[],specificationItems:[]} };
                     editor.html('');//清空富文本编辑器
                 }else{
                     alert(response.message);
@@ -166,8 +167,80 @@ app.controller('goodsController' ,function($scope,$controller,goodsService,uploa
                 function(response){
                     $scope.typeTemplate=response;//获取类型模板
                     $scope.typeTemplate.brandIds= JSON.parse( $scope.typeTemplate.brandIds);//品牌列表
+                    $scope.entity.goodsDesc.customAttributeItems= JSON.parse( $scope.typeTemplate.customAttributeItems);//扩展属性
+                }
+            );
+            typeTemplateService.findSpecList(newValue).success(
+                function(response){
+                    $scope.specList=response;
                 }
             );
         }
     });
+    $scope.entity={ goodsDesc:{itemImages:[],specificationItems:[]}  };
+    $scope.updateSpecAttribute=function($event,name,value){
+        //搜索规格选项，看指定规格是否存在  name规格名称 value 规格选项
+        var object= $scope.searchObjectByKey($scope.entity.goodsDesc.specificationItems ,'attributeName', name);
+        //如果规格存在
+        if(object!=null){
+            //判断复选框选中状态
+            if($event.target.checked ){
+                //复选框选中，把对应的规格选项值插入当前规格对应的规格选项数组
+                object.attributeValue.push(value);
+            }else{
+                //复选框取消勾选
+                object.attributeValue.splice( object.attributeValue.indexOf(value) ,1);//移除选项
+                //如果选项都取消了，将此条记录移除
+                if(object.attributeValue.length==0){
+                    $scope.entity.goodsDesc.specificationItems.splice($scope.entity.goodsDesc.specificationItems.indexOf(object),1);
+                }
+            }
+        }else{
+//首次选中某个规格，添加规格及对应选中的规格值
+$scope.entity.goodsDesc.specificationItems.push({"attributeName":name,"attributeValue":[value]});
+
+        }
+    }
+    //创建SKU列表
+    $scope.createItemList=function(){
+//spec 存储sku对应的规格
+        $scope.entity.itemList=[{spec:{},price:0,num:99999,status:'0',isDefault:'0' } ];//初始
+//定义变量 items指向 用户选中规格集合
+        var items=  $scope.entity.goodsDesc.specificationItems;
+//遍历用户选中规格集合
+        for(var i=0;i< items.length;i++){
+//编写增加sku规格方法addColumn 参数1:sku规格列表  参数2:规格名称  参数3:规格选项
+            $scope.entity.itemList = addColumn( $scope.entity.itemList,items[i].attributeName,items[i].attributeValue );
+        }
+    }
+//添加列值
+    addColumn=function(list,attributeName,attributeValue){
+        var newList=[];//新的集合
+//遍历sku规格列表
+        for(var i=0;i<list.length;i++){
+            //读取每行sku数据，赋值给遍历oldRow
+            var oldRow= list[i];
+            //遍历规格选项
+            for(var j=0;j<attributeValue.length;j++){
+                //深克隆当前行sku数据为 newRow
+                var newRow= JSON.parse( JSON.stringify( oldRow )  );//深克隆
+                //在新行扩展列（列名是规格名称），给列赋值（规格选项值）
+                newRow.spec[attributeName]=attributeValue[j];
+
+//保存新sku行到sku新集合
+                newList.push(newRow);
+            }
+        }
+        return newList;
+    }
+    //定义状态数组
+    $scope.status=['未审核','已审核','审核未通过','关闭'];
+    $scope.itemCatList=[];//商品分类列表
+    $scope.findAllItemCatList=function () {
+       itemCatService.findAll().success(function (response) {
+       for(var i=0;i<response.length;i++){
+            $scope.itemCatList[response[i].id]=response[i].name;
+        }
+       })
+    }
 });	
