@@ -15,6 +15,9 @@
         <module>youlexuan-sellergoods-service</module>
         <module>youlexuan-manager-web</module>
         <module>youlexuan-shop-web</module>
+        <module>youlexuan-content-interface</module>
+        <module>youlexuan-content-service</module>
+        <module>youlexuan-portal-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->

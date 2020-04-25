@@ -13,10 +13,18 @@
     <link rel="stylesheet" href="../css/style.css">
 	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-    
+
+    <script src="../plugins/angularjs/angular.min.js"></script>
+    <script src="../plugins/angularjs/pagination.js"></script>
+    <link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+
+    <script src="../js/base_pagination.js"></script>
+    <script type="text/javascript" src="../js/service/contentCategoryService.js">  </script>
+    <script src="../js/controller/baseController.js"></script>
+    <script src="../js/controller/contentCategoryController.js"></script>
 </head>
 
-<body class="hold-transition skin-red sidebar-mini"  >
+<body class="hold-transition skin-red sidebar-mini" ng-app="youlexuan" ng-controller="contentCategoryController" >
   <!-- .box-body -->
                 
                     <div class="box-header with-border">
@@ -63,10 +71,10 @@
 			                          </tr>
 			                      </thead>
 			                      <tbody>
-			                          <tr>
+			                          <tr ng-repeat="entity in list">
 			                              <td><input  type="checkbox" ></td>			                              
-				                          <td>1</td>
-									      <td>首页轮播广告</td>
+				                          <td>{{entity.id}}</td>
+									      <td>{{entity.name}}</td>
 									      <td>首页广告</td>
 									      <td>index</td>
 		                                  <td>
@@ -79,7 +87,9 @@
 			                          </tr>
 			                      </tbody>
 			                  </table>
-			                  <!--数据列表/--> 
+			                  <!--数据列表/-->
+                            <!-- 分页 -->
+                            <tm-pagination conf="paginationConf"></tm-pagination>
                         </div>
                         <!-- 数据表格 /-->
                      </div>

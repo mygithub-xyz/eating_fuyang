@@ -11,6 +11,7 @@ import com.offcn.pojo.*;
 import com.offcn.pojo.TbGoodsExample.Criteria;
 import com.offcn.sellergoods.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.Map;
  *
  */
 @Service
+@Transactional
 public class GoodsServiceImpl implements GoodsService {
 
 	@Autowired
@@ -66,13 +68,21 @@ public class GoodsServiceImpl implements GoodsService {
         goodsMapper.insert(goods.getGoods());
         goods.getGoodsDesc().setGoodsId(goods.getGoods().getId());//设置ID
         goodsDescMapper.insert(goods.getGoodsDesc());//插入商品扩展数据
-        if ("1".equals(goods.getGoods().getIsEnableSpec())) {
-            for (TbItem item : goods.getItemList()) {
+        saveItemList(goods);//插入商品SKU列表数据
+    }
+    /**
+     * 插入SKU列表数据
+     * @param goods
+     */
+    private void saveItemList(Goods goods){
+        //还缺少了sku保存
+        if("1".equals(goods.getGoods().getIsEnableSpec())){
+            for(TbItem item :goods.getItemList()){
                 //标题
-                String title = goods.getGoods().getGoodsName();
-                Map<String, Object> specMap = JSON.parseObject(item.getSpec());
-                for (String key : specMap.keySet()) {
-                    title += " " + specMap.get(key);
+                String title= goods.getGoods().getGoodsName();
+                Map<String,Object> specMap = JSON.parseObject(item.getSpec());
+                for(String key:specMap.keySet()){
+                    title+=" "+ specMap.get(key);
                 }
                 item.setTitle(title);
                 setItemValus(goods,item);
@@ -80,7 +90,7 @@ public class GoodsServiceImpl implements GoodsService {
             }
         }else{
             TbItem item=new TbItem();
-            item.setTitle(goods.getGoods().getGoodsName());//商品SPU+规格描述串作为SKU名称
+            item.setTitle(goods.getGoods().getGoodsName());//商品KPU作为SKU名称
             item.setPrice( goods.getGoods().getPrice() );//价格
             item.setStatus("1");//状态
             item.setIsDefault("1");//是否默认
@@ -90,6 +100,12 @@ public class GoodsServiceImpl implements GoodsService {
             itemMapper.insert(item);
         }
     }
+
+    /**
+     * 创建item表中字段值的方法
+     * @param goods
+     * @param item
+     */
         private void setItemValus(Goods goods,TbItem item) {
             item.setGoodsId(goods.getGoods().getId());//商品SPU编号
             item.setSellerId(goods.getGoods().getSellerId());//商家编号
@@ -119,9 +135,18 @@ public class GoodsServiceImpl implements GoodsService {
 	 * 修改
 	 */
 	@Override
-	public void update(TbGoods goods){
-		goodsMapper.updateByPrimaryKey(goods);
-	}	
+	public void update(Goods goods){
+        goods.getGoods().setAuditStatus("0");//设置未申请状态:如果是经过修改的商品，需要重新设置状态
+        goodsMapper.updateByPrimaryKey(goods.getGoods());//保存商品表
+        goodsDescMapper.updateByPrimaryKey(goods.getGoodsDesc());//保存商品扩展表
+        //删除原有的sku列表数据
+        TbItemExample example=new TbItemExample();
+        com.offcn.pojo.TbItemExample.Criteria criteria = example.createCriteria();
+        criteria.andGoodsIdEqualTo(goods.getGoods().getId());
+        itemMapper.deleteByExample(example);
+        //添加新的sku列表数据
+        saveItemList(goods);//插入商品SKU列表数据
+	}
 	
 	/**
 	 * 根据ID获取实体
@@ -129,19 +154,33 @@ public class GoodsServiceImpl implements GoodsService {
 	 * @return
 	 */
 	@Override
-	public TbGoods findOne(Long id){
-		return goodsMapper.selectByPrimaryKey(id);
+	public Goods findOne(Long id){
+	    Goods goods = new Goods();
+	    //查询商品
+	    goods.setGoods(goodsMapper.selectByPrimaryKey(id));
+	    //商品详细
+	    goods.setGoodsDesc(goodsDescMapper.selectByPrimaryKey(id));
+        //查询SKU商品列表
+        TbItemExample example=new TbItemExample();
+        TbItemExample.Criteria criteria = example.createCriteria();
+        criteria.andGoodsIdEqualTo(id);//查询条件：商品ID
+        List<TbItem> itemList = itemMapper.selectByExample(example);
+        goods.setItemList(itemList);
+        return goods;
 	}
 
-	/**
-	 * 批量删除
-	 */
-	@Override
-	public void delete(Long[] ids) {
-		for(Long id:ids){
-			goodsMapper.deleteByPrimaryKey(id);
-		}		
-	}
+
+    /**
+     * 批量删除
+     */
+    @Override
+    public void delete(Long[] ids) {
+        for(Long id:ids){
+            TbGoods goods = goodsMapper.selectByPrimaryKey(id);
+            goods.setIsDelete("1");
+            goodsMapper.updateByPrimaryKey(goods);
+        }
+    }
 	
 	
 		@Override
@@ -150,6 +189,7 @@ public class GoodsServiceImpl implements GoodsService {
 		
 		TbGoodsExample example=new TbGoodsExample();
 		Criteria criteria = example.createCriteria();
+        criteria.andIsDeleteIsNull();//非删除状态
 		
 		if(goods!=null){			
 						if(goods.getSellerId()!=null && goods.getSellerId().length()>0){
@@ -166,5 +206,30 @@ public class GoodsServiceImpl implements GoodsService {
 		Page<TbGoods> page= (Page<TbGoods>)goodsMapper.selectByExample(example);
 		return new PageResult(page.getTotal(), page.getResult());
 	}
-	
+
+    /**
+     * 修改审核状态
+     * @param ids
+     * @param status
+     */
+    @Override
+    public void updateStatus(Long[] ids, String status) {
+        for (Long id : ids) {
+            //修改商品状态spu
+            TbGoods tbGoods = goodsMapper.selectByPrimaryKey(id);
+            tbGoods.setAuditStatus(status);
+            goodsMapper.updateByPrimaryKey(tbGoods);
+            //修改sku状态
+            TbItemExample example=new TbItemExample();
+            TbItemExample.Criteria criteria = example.createCriteria();
+            criteria.andGoodsIdEqualTo(id);//查询条件：商品ID
+            List<TbItem> itemList = itemMapper.selectByExample(example);
+            for (TbItem tbItem : itemList) {
+                tbItem.setStatus(status);
+                itemMapper.updateByPrimaryKey(tbItem);
+            }
+
+        }
+    }
+
 }

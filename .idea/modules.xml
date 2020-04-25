@@ -3,9 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/youlexuan-common/youlexuan-common.iml" filepath="$PROJECT_DIR$/youlexuan-common/youlexuan-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/youlexuan-content-interface/youlexuan-content-interface.iml" filepath="$PROJECT_DIR$/youlexuan-content-interface/youlexuan-content-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/youlexuan-content-service/youlexuan-content-service.iml" filepath="$PROJECT_DIR$/youlexuan-content-service/youlexuan-content-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-dao/youlexuan-dao.iml" filepath="$PROJECT_DIR$/youlexuan-dao/youlexuan-dao.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-manager-web/youlexuan-manager-web.iml" filepath="$PROJECT_DIR$/youlexuan-manager-web/youlexuan-manager-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-pojo/youlexuan-pojo.iml" filepath="$PROJECT_DIR$/youlexuan-pojo/youlexuan-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/youlexuan-portal-web/youlexuan-portal-web.iml" filepath="$PROJECT_DIR$/youlexuan-portal-web/youlexuan-portal-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-sellergoods-interface/youlexuan-sellergoods-interface.iml" filepath="$PROJECT_DIR$/youlexuan-sellergoods-interface/youlexuan-sellergoods-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-sellergoods-service/youlexuan-sellergoods-service.iml" filepath="$PROJECT_DIR$/youlexuan-sellergoods-service/youlexuan-sellergoods-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-shop-web/youlexuan-shop-web.iml" filepath="$PROJECT_DIR$/youlexuan-shop-web/youlexuan-shop-web.iml" />
