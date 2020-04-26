@@ -18,6 +18,7 @@
         <module>youlexuan-content-interface</module>
         <module>youlexuan-content-service</module>
         <module>youlexuan-portal-web</module>
+        <module>youlexuan-solr-util</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->

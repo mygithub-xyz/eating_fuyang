@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/youlexuan-sellergoods-interface/youlexuan-sellergoods-interface.iml" filepath="$PROJECT_DIR$/youlexuan-sellergoods-interface/youlexuan-sellergoods-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-sellergoods-service/youlexuan-sellergoods-service.iml" filepath="$PROJECT_DIR$/youlexuan-sellergoods-service/youlexuan-sellergoods-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-shop-web/youlexuan-shop-web.iml" filepath="$PROJECT_DIR$/youlexuan-shop-web/youlexuan-shop-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/youlexuan-solr-util/youlexuan-solr-util.iml" filepath="$PROJECT_DIR$/youlexuan-solr-util/youlexuan-solr-util.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/youlexuan_parent.iml" filepath="$PROJECT_DIR$/.idea/youlexuan_parent.iml" />
     </modules>
   </component>

@@ -10,11 +10,12 @@
         <module name="youlexuan-content-service" />
         <module name="youlexuan-shop-web" />
         <module name="youlexuan-manager-web" />
-        <module name="youlexuan-common" />
+        <module name="youlexuan-solr-util" />
         <module name="youlexuan-sellergoods-interface" />
         <module name="youlexuan-content-interface" />
-        <module name="youlexuan-portal-web" />
         <module name="youlexuan-pojo" />
+        <module name="youlexuan-portal-web" />
+        <module name="youlexuan-common" />
         <module name="youlexuan-sellergoods-service" />
       </profile>
     </annotationProcessing>
@@ -29,6 +30,7 @@
       <module name="youlexuan-sellergoods-interface" target="1.5" />
       <module name="youlexuan-sellergoods-service" target="6" />
       <module name="youlexuan-shop-web" target="1.5" />
+      <module name="youlexuan-solr-util" target="1.5" />
       <module name="youlexuan_parent" target="1.5" />
     </bytecodeTargetLevel>
   </component>
