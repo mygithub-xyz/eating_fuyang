@@ -32,7 +32,7 @@ public class SolrUtil {
         //读取数据库，从数据库读取sku数据
 
         TbItemExample example = new TbItemExample();
-        TbItemExample.Criteria criteria = example.createCriteria();
+        Criteria criteria = example.createCriteria();
         criteria.andStatusEqualTo("1");//已审核通过的商品
         List<TbItem> itemList = itemMapper.selectByExample(example);
       //遍历全部通过审核商品列表数据

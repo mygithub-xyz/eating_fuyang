@@ -9,6 +9,9 @@
       <module fileurl="file://$PROJECT_DIR$/youlexuan-manager-web/youlexuan-manager-web.iml" filepath="$PROJECT_DIR$/youlexuan-manager-web/youlexuan-manager-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-pojo/youlexuan-pojo.iml" filepath="$PROJECT_DIR$/youlexuan-pojo/youlexuan-pojo.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-portal-web/youlexuan-portal-web.iml" filepath="$PROJECT_DIR$/youlexuan-portal-web/youlexuan-portal-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/youlexuan-search-interface/youlexuan-search-interface.iml" filepath="$PROJECT_DIR$/youlexuan-search-interface/youlexuan-search-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/youlexuan-search-service/youlexuan-search-service.iml" filepath="$PROJECT_DIR$/youlexuan-search-service/youlexuan-search-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/youlexuan-search-web/youlexuan-search-web.iml" filepath="$PROJECT_DIR$/youlexuan-search-web/youlexuan-search-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-sellergoods-interface/youlexuan-sellergoods-interface.iml" filepath="$PROJECT_DIR$/youlexuan-sellergoods-interface/youlexuan-sellergoods-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-sellergoods-service/youlexuan-sellergoods-service.iml" filepath="$PROJECT_DIR$/youlexuan-sellergoods-service/youlexuan-sellergoods-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-shop-web/youlexuan-shop-web.iml" filepath="$PROJECT_DIR$/youlexuan-shop-web/youlexuan-shop-web.iml" />

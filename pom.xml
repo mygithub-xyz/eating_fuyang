@@ -19,6 +19,12 @@
         <module>youlexuan-content-service</module>
         <module>youlexuan-portal-web</module>
         <module>youlexuan-solr-util</module>
+        <module>youlexuan-search-interface</module>
+        <module>youlexuan-search-service</module>
+        <module>youlexuan-search-web</module>
+        <module>youlexuan-search-servic</module>
+        <module>youlexuan-search-service</module>
+        <module>youlexuan-search-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->

@@ -4,6 +4,8 @@
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-content-service" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-manager-web" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-portal-web" />
+    <file type="web" url="file://$PROJECT_DIR$/youlexuan-search-service" />
+    <file type="web" url="file://$PROJECT_DIR$/youlexuan-search-web" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-sellergoods-service" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-shop-web" />
   </component>
@@ -15,6 +17,11 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/youlexuan-search-servic/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_13" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />

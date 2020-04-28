@@ -6,17 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="youlexuan-dao" />
-        <module name="youlexuan-content-service" />
-        <module name="youlexuan-shop-web" />
         <module name="youlexuan-manager-web" />
-        <module name="youlexuan-solr-util" />
-        <module name="youlexuan-sellergoods-interface" />
-        <module name="youlexuan-content-interface" />
-        <module name="youlexuan-pojo" />
-        <module name="youlexuan-portal-web" />
-        <module name="youlexuan-common" />
         <module name="youlexuan-sellergoods-service" />
+        <module name="youlexuan-pojo" />
+        <module name="youlexuan-common" />
+        <module name="youlexuan-content-service" />
+        <module name="youlexuan-sellergoods-interface" />
+        <module name="youlexuan-search-web" />
+        <module name="youlexuan-content-interface" />
+        <module name="youlexuan-dao" />
+        <module name="youlexuan-search-service" />
+        <module name="youlexuan-search-interface" />
+        <module name="youlexuan-solr-util" />
+        <module name="youlexuan-portal-web" />
+        <module name="youlexuan-shop-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -27,6 +30,10 @@
       <module name="youlexuan-manager-web" target="1.5" />
       <module name="youlexuan-pojo" target="1.5" />
       <module name="youlexuan-portal-web" target="1.5" />
+      <module name="youlexuan-search-interface" target="1.5" />
+      <module name="youlexuan-search-servic" target="1.5" />
+      <module name="youlexuan-search-service" target="6" />
+      <module name="youlexuan-search-web" target="1.5" />
       <module name="youlexuan-sellergoods-interface" target="1.5" />
       <module name="youlexuan-sellergoods-service" target="6" />
       <module name="youlexuan-shop-web" target="1.5" />
