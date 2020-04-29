@@ -336,7 +336,7 @@
 						<li class="yui3-u-1-5" ng-repeat=" item in resultMap.rows">
 							<div class="list-wrap">
 								<div class="p-img">
-									<a href="item.html" target="_blank"><img src="{{item.image}}" /></a>
+									<a href="item.html" target="_blank"><img src="{{item.image}}"/></a>
 								</div>
 								<div class="price">
 									<strong>
@@ -344,7 +344,7 @@
 											<i>{{item.price}}</i>
 										</strong>
 								</div>
-								<div class="attr">
+								<div class="attr" ng-bind-html="item.title | trustHtml">
                                     <em>{{item.title}}</em>
 								</div>
 								<div class="cu">
