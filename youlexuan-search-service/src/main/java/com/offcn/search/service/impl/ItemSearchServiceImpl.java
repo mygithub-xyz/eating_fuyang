@@ -5,9 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
 import com.github.promeg.pinyinhelper.Pinyin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.solr.core.SolrTemplate;
 import org.springframework.data.solr.core.query.*;
@@ -30,6 +32,8 @@ public class ItemSearchServiceImpl implements ItemSearchService {
      */
     @Override
     public Map<String, Object> search(Map searchMap) {
+        String keywords = (String) searchMap.get("keywords");
+        searchMap.put("keywords", keywords.replace(" ", ""));
         Map<String, Object> map = new HashMap<String, Object>();
         //1按关键字查询（高亮显示）
         map.putAll(searchLsit(searchMap));
@@ -89,13 +93,49 @@ public class ItemSearchServiceImpl implements ItemSearchService {
             query.addFilterQuery(filterQuery);
         }
         //1.4按规格筛选
-        //1.4过滤规格
         if(searchMap.get("spec")!=null){
             Map<String,String> specMap= (Map) searchMap.get("spec");
             for(String key:specMap.keySet() ){
                 Criteria filterCriteria=new Criteria("item_spec_"+Pinyin.toPinyin(key, "").toLowerCase()).is( specMap.get(key) );
                 FilterQuery filterQuery=new SimpleFilterQuery(filterCriteria);
                 query.addFilterQuery(filterQuery);
+            }
+        }
+        //1.5价格按筛选
+        if(!"".equals(searchMap.get("price"))){
+            String[] prices = ((String) searchMap.get("price")).split("-");
+            if (!prices[0].equals("0")){
+                Criteria filterCriteria=new Criteria("item_price").greaterThan(prices[0]);
+                FilterQuery filterQuery=new SimpleFilterQuery(filterCriteria);
+                query.addFilterQuery(filterQuery);
+            }if (!prices[1].equals("*")){
+                Criteria filterCriteria=new Criteria("item_price").lessThanEqual(prices[1]);
+                FilterQuery filterQuery=new SimpleFilterQuery(filterCriteria);
+                query.addFilterQuery(filterQuery);
+            }
+        }
+        //1.6分页查询
+        Integer pageNo=(Integer)searchMap.get("pageNo");
+        if (pageNo==null){
+            pageNo=1;//默认第一页
+        }
+        Integer pageSize=(Integer)searchMap.get("pageSize");
+        if (pageSize==null){
+            pageSize=20;//默认20条
+        }
+        query.setOffset((pageNo-1)*pageSize);//从第几条记录查询
+        query.setRows(pageSize);//查询条数
+        //1.7排序
+        String sortValue= (String) searchMap.get("sort");//ASC  DESC
+        String sortField= (String) searchMap.get("sortField");//排序字段
+        if(sortValue!=null && !sortValue.equals("")){
+            if(sortValue.equals("ASC")){
+                Sort sort=new Sort(Sort.Direction.ASC, "item_"+sortField);
+                query.addSort(sort);
+            }
+            if(sortValue.equals("DESC")){
+                Sort sort=new Sort(Sort.Direction.DESC, "item_"+sortField);
+                query.addSort(sort);
             }
         }
         //发起高亮查询请求
@@ -116,9 +156,12 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         }
         //将高亮结果集放到map集合中
        map.put("rows",tbItemsList);
+        //总页数
+        map.put("totalPages",highlightPage.getTotalPages());
+        //总记录数
+        map.put("totalElements",highlightPage.getTotalElements());
         return map;
     }
-
     /**
      * 分类列表分组查询
      * @param searchMap
@@ -175,5 +218,30 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         return map;
     }
 
+    @Override
+    public void importList(List<TbItem> list) {
+        for(TbItem item:list){
+            System.out.println(item.getTitle());
+            Map<String,Object> specMap = JSON.parseObject(item.getSpec(),Map.class);//从数据库中提取规格json字符串转换为map
+            Map map = new HashMap();
+            for(String key : specMap.keySet()) {
+                map.put("item_spec_"+Pinyin.toPinyin(key, "").toLowerCase(), specMap.get(key));
+            }
+
+            item.setSpecMap(map);	//给带动态域注解的字段赋值
+
+        }
+        solrTemplate.saveBeans(list);
+        solrTemplate.commit();
+    }
+    @Override
+    public void deleteByGoodsIds(List goodsIdList) {
+        System.out.println("删除商品ID"+goodsIdList);
+        Query query=new SimpleQuery();
+        Criteria criteria=new Criteria("item_goods_id").in(goodsIdList);
+        query.addCriteria(criteria);
+        solrTemplate.delete(query);
+        solrTemplate.commit();
+    }
 
 }

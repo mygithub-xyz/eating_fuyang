@@ -237,10 +237,10 @@ ul.logo-list li {
 }
 
 .sui-pagination ul>.active>a {
-	background-color: #fff;
-	color: #c81623;
-	border-color: #fff;
-	cursor: default
+    background-color: #1fa5ff;
+    color: #ffffff;
+    border-color: #fff;
+    cursor: default
 }
 
 .sui-pagination ul>.active>a:hover {

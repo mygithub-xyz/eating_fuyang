@@ -3,6 +3,7 @@ package com.offcn.sellergoods.service;
 import com.offcn.entity.PageResult;
 import com.offcn.group.Goods;
 import com.offcn.pojo.TbGoods;
+import com.offcn.pojo.TbItem;
 
 import java.util.List;
 
@@ -66,4 +67,12 @@ public interface GoodsService {
      * @param status
      */
     public void updateStatus(Long []ids,String status);
+    /**
+     * 根据商品ID和状态查询Item表信息
+     * @param goodsIds
+     * @param status
+     * @return
+     */
+    public List<TbItem> findItemListByGoodsIdandStatus(Long[] goodsIds, String status );
+
 }

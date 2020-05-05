@@ -13,6 +13,7 @@ import com.offcn.sellergoods.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -180,6 +181,13 @@ public class GoodsServiceImpl implements GoodsService {
             goods.setIsDelete("1");
             goodsMapper.updateByPrimaryKey(goods);
         }
+            //修改商品sku状态为删除
+            List<TbItem> listitem = findItemListByGoodsIdandStatus(ids,"1");
+            for (TbItem tbItem : listitem) {
+                tbItem.setStatus("3");
+                itemMapper.updateByPrimaryKey(tbItem);
+            }
+
     }
 	
 	
@@ -229,7 +237,15 @@ public class GoodsServiceImpl implements GoodsService {
                 itemMapper.updateByPrimaryKey(tbItem);
             }
 
+            }
         }
-    }
+      @Override
+           public List<TbItem> findItemListByGoodsIdandStatus(Long[] goodsIds, String status) {
+            TbItemExample example=new TbItemExample();
+            com.offcn.pojo.TbItemExample.Criteria criteria = example.createCriteria();
+            criteria.andGoodsIdIn(Arrays.asList(goodsIds));
+            criteria.andStatusEqualTo(status);
+            return itemMapper.selectByExample(example);
+        }
 
 }

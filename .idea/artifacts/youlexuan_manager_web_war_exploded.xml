@@ -93,6 +93,9 @@
           <element id="archive" name="youlexuan-content-interface-1.0-SNAPSHOT.jar">
             <element id="module-output" name="youlexuan-content-interface" />
           </element>
+          <element id="archive" name="youlexuan-search-interface-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="youlexuan-search-interface" />
+          </element>
         </element>
       </element>
       <element id="directory" name="META-INF">
