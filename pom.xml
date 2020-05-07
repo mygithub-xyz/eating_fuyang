@@ -22,6 +22,9 @@
         <module>youlexuan-search-interface</module>
         <module>youlexuan-search-service</module>
         <module>youlexuan-search-web</module>
+        <module>youlexuan-page-interface</module>
+        <module>youlexuan-page-service</module>
+        <module>youlexuan-page-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->

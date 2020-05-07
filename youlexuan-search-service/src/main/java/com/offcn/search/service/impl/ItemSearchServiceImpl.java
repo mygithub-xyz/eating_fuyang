@@ -217,8 +217,6 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         }
         return map;
     }
-
-    @Override
     public void importList(List<TbItem> list) {
         for(TbItem item:list){
             System.out.println(item.getTitle());
@@ -234,7 +232,6 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         solrTemplate.saveBeans(list);
         solrTemplate.commit();
     }
-    @Override
     public void deleteByGoodsIds(List goodsIdList) {
         System.out.println("删除商品ID"+goodsIdList);
         Query query=new SimpleQuery();

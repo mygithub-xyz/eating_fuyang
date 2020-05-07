@@ -18,9 +18,12 @@
 		</style>
 	</head>
     <script type="text/javascript" src="plugins/angularjs/angular.min.js"></script>
+    <script src="plugins/angularjs/pagination.js"></script>
+    <link rel="stylesheet" href="plugins/angularjs/pagination.css">
+
     <script type="text/javascript" src="js/base.js"></script>
-    <script type="text/javascript" src="js/service/searchService.js"></script>
-    <script type="text/javascript" src="js/controller/searchController.js"></script>
+    <script type="text/javascript" src="js/service/itemService.js"></script>
+    <script type="text/javascript" src="js/controller/itemController.js"></script>
 
 	<body ng-app="youlexuan" ng-controller="searchController" ng-init="loadkeywords()" >
 		<!-- 头部栏位 -->
@@ -86,7 +89,7 @@
 										<!--searchAutoComplete-->
 										<div class="input-append">
 											<input type="text" id="autocomplete" type="text" ng-model="searchMap.keywords" class="input-error input-xxlarge" />
-											<button class="sui-btn btn-xlarge btn-danger" type="button" ng-click="searchMap.pageNo=1;removeAllItem();search()">搜索</button>
+											<button class="sui-btn btn-xlarge btn-danger" type="button" ng-click="searchMap.pageNo=1;search()">搜索</button>
 										</div>
 									</form>
 								</div>
@@ -296,20 +299,18 @@
 							<!--<li class="active">
 								<a href="#">1</a>
 							</li>-->
-							<li class={{pageLabel[$index]==searchMap.pageNo?'active':''}} ng-repeat="page in pageLabel">
+							<li class={{ispage(page)?'active':''}} ng-repeat="page in pageLabel">
 								<a href="#" ng-click="searchByPage(page)">{{page}}</a>
 							</li>
                                <li class="dotted" ng-if="lastDot==true"><span>...</span></li>
-							<li class="next {{isEndPage()?'disabled':''}}">
-								<a href="#" ng-click="searchByPage(searchMap.pageNo+1)">下一页»</a>
-							</li>
+                               <li class="next {{isEndPage()?'disabled':''}}" >
+                                   <a href="#" ng-click="searchByPage(searchMap.pageNo+1)">下一页»</a>
+                               </li>
 						</ul>
 						<div>
-                            <span>搜索结果：{{resultMap.totalElements}}条记录</span>
-                            <span>&nbsp;共{{resultMap.totalPages}}页&nbsp</span>
-                            <span>到第<input type="text" class="page-num" ng-model="searchMap.pageNo">
-                             页<button class="page-confirm" ng-click="searchByPage(searchMap.pageNo)">确定</button>
-                            </span>
+                                <span>&nbsp;共{{resultMap.totalPages}}页&nbsp;</span>
+                                <span>  到第 <input type="text" class="page-num" ng-model="searchMap.pageNo">
+                                <button class="page-confirm"  ng-click="searchByPage(searchMap.pageNo)" >确定</button></span>
                         </div>
 					</div>
 				</div>

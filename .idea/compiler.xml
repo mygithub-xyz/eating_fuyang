@@ -12,10 +12,13 @@
         <module name="youlexuan-common" />
         <module name="youlexuan-content-service" />
         <module name="youlexuan-sellergoods-interface" />
+        <module name="youlexuan-page-web" />
         <module name="youlexuan-search-web" />
+        <module name="youlexuan-search-service" />
         <module name="youlexuan-content-interface" />
         <module name="youlexuan-dao" />
-        <module name="youlexuan-search-service" />
+        <module name="youlexuan-page-interface" />
+        <module name="youlexuan-page-service" />
         <module name="youlexuan-search-interface" />
         <module name="youlexuan-solr-util" />
         <module name="youlexuan-portal-web" />
@@ -28,6 +31,9 @@
       <module name="youlexuan-content-service" target="6" />
       <module name="youlexuan-dao" target="1.5" />
       <module name="youlexuan-manager-web" target="1.5" />
+      <module name="youlexuan-page-interface" target="1.5" />
+      <module name="youlexuan-page-service" target="6" />
+      <module name="youlexuan-page-web" target="1.5" />
       <module name="youlexuan-pojo" target="1.5" />
       <module name="youlexuan-portal-web" target="1.5" />
       <module name="youlexuan-search-interface" target="1.5" />

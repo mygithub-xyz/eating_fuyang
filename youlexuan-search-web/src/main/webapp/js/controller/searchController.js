@@ -1,10 +1,12 @@
 app.controller('searchController',function($scope,$location,searchService) {
     $scope.searchMap={'keywords':'','category':'','brand':'','spec':{},'price':'','pageNo':1,'pageSize':20,'sortField':'','sort':'' };//搜索对象
-
+    $scope.resultMap={};
     //加载查询字符串
     $scope.loadkeywords=function(){
         $scope.searchMap.keywords= $location.search()['keywords'];
-        $scope.search();
+        if ($scope.searchMap.keywords!=null){
+            $scope.search();
+        }
     }
     //搜索
     $scope.search = function () {
@@ -86,12 +88,19 @@ app.controller('searchController',function($scope,$location,searchService) {
             return false;
         }
     }
-    //判断当前页是否未最后一页 该方法会出现totalPage未定义异常,需要定义totalPages
-    $scope.resultMap={"totalPages":1};
+    //判断是否是尾页
     $scope.isEndPage=function(){
         if($scope.searchMap.pageNo==$scope.resultMap.totalPages){
             return true;
         }else{
+            return false;
+        }
+    }
+    //判断指定页码是否是当前页
+    $scope.ispage=function (p) {
+        if(parseInt(p)==parseInt($scope.searchMap.pageNo)){
+            return true;
+        }else {
             return false;
         }
     }
@@ -101,6 +110,7 @@ app.controller('searchController',function($scope,$location,searchService) {
         $scope.searchMap.sort=sort;
         $scope.search();
     }
+
     //判断关键字是不是品牌
     $scope.keywordsIsBrand=function(){
         for(var i=0;i<$scope.resultMap.brandList.length;i++) {

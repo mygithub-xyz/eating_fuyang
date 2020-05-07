@@ -4,9 +4,9 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.offcn.entity.PageResult;
 import com.offcn.entity.Result;
 import com.offcn.group.Goods;
+import com.offcn.page.service.ItemPageService;
 import com.offcn.pojo.TbGoods;
 import com.offcn.pojo.TbItem;
-import com.offcn.pojo.TbItemExample;
 import com.offcn.search.service.ItemSearchService;
 import com.offcn.sellergoods.service.GoodsService;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,8 +25,20 @@ import java.util.List;
 @RequestMapping("/goods")
 public class GoodsController {
 
-	@Reference
+	@Reference(timeout=40000)
 	private GoodsService goodsService;
+    @Reference(timeout=40000)
+    private ItemSearchService itemSearchService;
+    @Reference(timeout=40000)
+    private ItemPageService itemPageService;
+    /**
+     * 生成静态页（测试）
+     * @param goodsId
+     */
+    @RequestMapping("/genHtml")
+    public void genHtml(Long goodsId){
+        itemPageService.genItemHtml(goodsId);
+    }
 	
 	/**
 	 * 返回全部列表
@@ -94,7 +106,9 @@ public class GoodsController {
 	 * @param ids
 	 * @return
 	 */
+
 	@RequestMapping("/delete")
+
 	public Result delete(Long [] ids){
 		try {
 			goodsService.delete(ids);
@@ -123,8 +137,6 @@ public class GoodsController {
      * @param ids
      * @param status
      */
-    @Reference
-    private ItemSearchService itemSearchService;
    @RequestMapping("/updateStatus")
     public Result updateStatus(Long []ids,String status){
         try {
@@ -136,6 +148,10 @@ public class GoodsController {
                     itemSearchService.importList(itemList);
                 }else{
                     System.out.println("没有明细数据");
+                }
+                //静态页生成
+                for(Long goodsId:ids){
+                    itemPageService.genItemHtml(goodsId);
                 }
             }
             return new Result(true, "修改成功");

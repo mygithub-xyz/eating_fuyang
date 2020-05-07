@@ -239,7 +239,6 @@ public class GoodsServiceImpl implements GoodsService {
 
             }
         }
-      @Override
            public List<TbItem> findItemListByGoodsIdandStatus(Long[] goodsIds, String status) {
             TbItemExample example=new TbItemExample();
             com.offcn.pojo.TbItemExample.Criteria criteria = example.createCriteria();
