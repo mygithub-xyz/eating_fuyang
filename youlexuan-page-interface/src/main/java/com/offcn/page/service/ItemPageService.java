@@ -6,4 +6,11 @@ public interface ItemPageService {
      * @param goodsId
      */
     public boolean genItemHtml(Long goodsId);
+
+    /**
+     * 删除详情页
+     * @param goodsIds
+     * @return
+     */
+    boolean deleteItemHtml(Long[] goodsIds);
 }

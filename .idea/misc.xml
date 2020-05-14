@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="EntryPointsManager">
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="org.springframework.beans.factory.annotation.Autowired" />
+    </list>
+  </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-content-service" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-manager-web" />
@@ -10,6 +15,9 @@
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-search-web" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-sellergoods-service" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-shop-web" />
+    <file type="web" url="file://$PROJECT_DIR$/youlexuan-sms-service" />
+    <file type="web" url="file://$PROJECT_DIR$/youlexuan-user-service" />
+    <file type="web" url="file://$PROJECT_DIR$/youlexuan-user-web" />
   </component>
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />

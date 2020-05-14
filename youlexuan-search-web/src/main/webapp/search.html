@@ -15,6 +15,9 @@
 				box-sizing:border-box;
 				padding-left:20px;
 			}
+            .disabled{
+                pointer-events:none;
+            }
 		</style>
 	</head>
     <script type="text/javascript" src="plugins/angularjs/angular.min.js"></script>
@@ -22,8 +25,8 @@
     <link rel="stylesheet" href="plugins/angularjs/pagination.css">
 
     <script type="text/javascript" src="js/base.js"></script>
-    <script type="text/javascript" src="js/service/itemService.js"></script>
-    <script type="text/javascript" src="js/controller/itemController.js"></script>
+    <script type="text/javascript" src="js/service/searchService.js"></script>
+    <script type="text/javascript" src="js/controller/searchController.js"></script>
 
 	<body ng-app="youlexuan" ng-controller="searchController" ng-init="loadkeywords()" >
 		<!-- 头部栏位 -->

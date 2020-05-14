@@ -13,12 +13,16 @@
         <module name="youlexuan-content-service" />
         <module name="youlexuan-sellergoods-interface" />
         <module name="youlexuan-page-web" />
+        <module name="youlexuan-user-interface" />
         <module name="youlexuan-search-web" />
         <module name="youlexuan-search-service" />
         <module name="youlexuan-content-interface" />
         <module name="youlexuan-dao" />
         <module name="youlexuan-page-interface" />
+        <module name="youlexuan-sms-service" />
+        <module name="youlexuan-user-service" />
         <module name="youlexuan-page-service" />
+        <module name="youlexuan-user-web" />
         <module name="youlexuan-search-interface" />
         <module name="youlexuan-solr-util" />
         <module name="youlexuan-portal-web" />
@@ -30,7 +34,7 @@
       <module name="youlexuan-content-interface" target="1.5" />
       <module name="youlexuan-content-service" target="6" />
       <module name="youlexuan-dao" target="1.5" />
-      <module name="youlexuan-manager-web" target="1.5" />
+      <module name="youlexuan-manager-web" target="6" />
       <module name="youlexuan-page-interface" target="1.5" />
       <module name="youlexuan-page-service" target="6" />
       <module name="youlexuan-page-web" target="1.5" />
@@ -43,7 +47,11 @@
       <module name="youlexuan-sellergoods-interface" target="1.5" />
       <module name="youlexuan-sellergoods-service" target="6" />
       <module name="youlexuan-shop-web" target="1.5" />
+      <module name="youlexuan-sms-service" target="6" />
       <module name="youlexuan-solr-util" target="1.5" />
+      <module name="youlexuan-user-interface" target="1.5" />
+      <module name="youlexuan-user-service" target="6" />
+      <module name="youlexuan-user-web" target="1.5" />
       <module name="youlexuan_parent" target="1.5" />
     </bytecodeTargetLevel>
   </component>

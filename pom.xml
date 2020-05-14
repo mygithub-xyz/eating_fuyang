@@ -25,6 +25,10 @@
         <module>youlexuan-page-interface</module>
         <module>youlexuan-page-service</module>
         <module>youlexuan-page-web</module>
+        <module>youlexuan-sms-service</module>
+        <module>youlexuan-user-interface</module>
+        <module>youlexuan-user-service</module>
+        <module>youlexuan-user-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
