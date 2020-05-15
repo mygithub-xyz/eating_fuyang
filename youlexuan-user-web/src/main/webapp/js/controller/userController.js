@@ -14,6 +14,7 @@ app.controller('userController' ,function($scope,userService){
             alert("对不起两次输入的密码不一致");
             return;
         }
+        RemainTime();
         userService.add($scope.entity,$scope.smscode).success(function (response) {
             if(response.success){
                 alert("恭喜你注册成功");
@@ -30,10 +31,12 @@ app.controller('userController' ,function($scope,userService){
             alert("请输入手机号码");
             return;
         }
+        RemainTime();
         userService.sendCode($scope.entity.phone).success(
             function(response){
                 alert(response.message);
             }
         );
     }
+
 });

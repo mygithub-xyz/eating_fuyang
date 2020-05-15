@@ -10,6 +10,7 @@ import com.offcn.pojo.TbUser;
 import com.offcn.pojo.TbUserExample;
 import com.offcn.pojo.TbUserExample.Criteria;
 import com.offcn.user.service.UserService;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -20,6 +21,7 @@ import javax.jms.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 用户表服务实现层
@@ -145,11 +147,16 @@ public class UserServiceImpl implements UserService {
      * 生成短信验证码
      */
     public void createSmsCode(final String phone){
-        //生成6位随机数
+        //生成6位随机数,方法一:
         final String code =  (long) (Math.random()*1000000)+"";
+        //方法二:  String s = RandomStringUtils.randomNumeric(6);
         System.out.println("验证码："+code);
         //存入缓存
         redisTemplate.boundHashOps("smscode").put(phone, code);
+        /**
+         *  设置过期时间,达到过期失效,一分钟,前端可以设置倒计时读秒
+         *  redisTemplate.expire("smscode",60000, TimeUnit.MILLISECONDS);
+         */
         //发送到activeMQ
         jmsTemplate.send(smsDestination, new MessageCreator() {
             @Override
