@@ -6,6 +6,8 @@
     </list>
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/youlexuan-cart-service" />
+    <file type="web" url="file://$PROJECT_DIR$/youlexuan-cart-web" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-content-service" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-manager-web" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-page-service" />

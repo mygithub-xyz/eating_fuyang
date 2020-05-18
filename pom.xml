@@ -29,6 +29,9 @@
         <module>youlexuan-user-interface</module>
         <module>youlexuan-user-service</module>
         <module>youlexuan-user-web</module>
+        <module>youlexuan-cart-interface</module>
+        <module>youlexuan-cart-service</module>
+        <module>youlexuan-cart-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->

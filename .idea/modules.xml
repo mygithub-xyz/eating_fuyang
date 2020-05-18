@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/youlexuan-cart-interface/youlexuan-cart-interface.iml" filepath="$PROJECT_DIR$/youlexuan-cart-interface/youlexuan-cart-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/youlexuan-cart-service/youlexuan-cart-service.iml" filepath="$PROJECT_DIR$/youlexuan-cart-service/youlexuan-cart-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/youlexuan-cart-web/youlexuan-cart-web.iml" filepath="$PROJECT_DIR$/youlexuan-cart-web/youlexuan-cart-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-common/youlexuan-common.iml" filepath="$PROJECT_DIR$/youlexuan-common/youlexuan-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-content-interface/youlexuan-content-interface.iml" filepath="$PROJECT_DIR$/youlexuan-content-interface/youlexuan-content-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-content-service/youlexuan-content-service.iml" filepath="$PROJECT_DIR$/youlexuan-content-service/youlexuan-content-service.iml" />
