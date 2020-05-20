@@ -1,4 +1,4 @@
-app.controller('itemController',function($scope) {
+app.controller('itemController',function($scope,$http) {
     //数量操作
     $scope.addNum=function(x){
         $scope.num=$scope.num+x;
@@ -10,6 +10,8 @@ app.controller('itemController',function($scope) {
     //用户选择规格
     $scope.selectSpecification=function(name,value){
         $scope.specificationItems[name]=value;
+        //循环判断选中的sku赋值,$scope.sku
+        seachSku();
     }
     //判断某规格选项是否被用户选中
     $scope.isSelected=function(name,value){
@@ -20,6 +22,7 @@ app.controller('itemController',function($scope) {
         }
     }
     //加载默认SKU
+    $scope.sku={};
     $scope.loadSku=function(){
         $scope.sku=skuList[0];
         $scope.specificationItems= JSON.parse(JSON.stringify($scope.sku.spec)) ;
@@ -47,15 +50,25 @@ app.controller('itemController',function($scope) {
                 return ;
             }
         }
-        $scope.sku={id:0,title:'--------',price:0};//如果没有匹配的
+        $scope.sku={id:0,title:'****',price:0};//如果没有匹配的
     }
     //用户选择规格
     $scope.selectSpecification=function(name,value){
         $scope.specificationItems[name]=value;
         searchSku();//读取sku
     }
-    //添加商品到购物车
-    $scope.addToCart=function(){
-        alert('skuid:'+$scope.sku.id);
+    //加入购物车
+    $scope.addToCart=function () {
+        $http.get('http://localhost:9107/cart/addGoodsToCartList.do?itemId='+$scope.sku.id+"&num="+$scope.num, {'withCredentials':true}).success(
+            function (response) {
+                if(response.success){
+                    //跳转到购物车页
+                    location.href="http://localhost:9107/cart.html";
+                }else{
+                    alert(response.message);
+                }
+            }
+        );
+        alert($scope.sku.id);
     }
 });

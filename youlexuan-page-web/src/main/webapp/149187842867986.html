@@ -20,16 +20,16 @@
         //SKU商品列表
         var skuList=[
                       {
-                "id":1369293,
-                "title":"电饭煲 移动3G 32G",
-                "price":0,
-                "spec": {"网络":"移动3G","机身内存":"32G"}
+                "id":1369297,
+                "title":"白鹿原 字数",
+                "price":123,
+                "spec": {"电子书":"字数"}
              } ,
              {
-                "id":1369294,
-                "title":"电饭煲 移动4G 32G",
-                "price":0,
-                "spec": {"网络":"移动4G","机身内存":"32G"}
+                "id":1369298,
+                "title":"白鹿原 类型",
+                "price":345,
+                "spec": {"电子书":"类型"}
              } ,
         ];
     </script>
@@ -157,9 +157,9 @@
 		<div id="item">
 			<div class="crumb-wrap">
 				<ul class="sui-breadcrumb">
-					<li><a href="#">家用电器</a></li>
-					<li><a href="#">厨房电器</a></li>
-					<li><a href="#">豆浆机</a></li>
+					<li><a href="#">图书、音像、电子书刊</a></li>
+					<li><a href="#">电子书刊</a></li>
+					<li><a href="#">电子书</a></li>
 				</ul>
 			</div>
 			<!--product-info-->
@@ -170,7 +170,7 @@
 						<!--默认第一个预览-->
 						<div id="preview" class="spec-preview">
 							<span class="jqzoom">
-                                    <img jqimg="http://192.168.188.146/group1/M00/00/00/wKi8kl61f3iAQ4IcAAAzwX4D32s081.jpg" src="http://192.168.188.146/group1/M00/00/00/wKi8kl61f3iAQ4IcAAAzwX4D32s081.jpg" width="400px" height="400px" />
+                                    <img jqimg="http://192.168.188.146/group1/M00/00/00/wKi8kl61maaAEGTXAAATt5Bf7nI883.gif" src="http://192.168.188.146/group1/M00/00/00/wKi8kl61maaAEGTXAAATt5Bf7nI883.gif" width="400px" height="400px" />
                             </span>
 						</div>
 						<!--下方的缩略图-->
@@ -179,7 +179,7 @@
 							<!--左右按钮-->
 							<div class="items">
 								<ul>
-                                        <li><img src="http://192.168.188.146/group1/M00/00/00/wKi8kl61f3iAQ4IcAAAzwX4D32s081.jpg" bimg="http://192.168.188.146/group1/M00/00/00/wKi8kl61f3iAQ4IcAAAzwX4D32s081.jpg" onmousemove="preview(this)" /></li>
+                                        <li><img src="http://192.168.188.146/group1/M00/00/00/wKi8kl61maaAEGTXAAATt5Bf7nI883.gif" bimg="http://192.168.188.146/group1/M00/00/00/wKi8kl61maaAEGTXAAATt5Bf7nI883.gif" onmousemove="preview(this)" /></li>
 								</ul>
 							</div>
 							<a class="next">&gt;</a>
@@ -190,7 +190,7 @@
 					<div class="sku-name">
                         <h4>{{sku.title}}</h4>
 					</div>
-					<div class="news"><span>米饭</span></div>
+					<div class="news"><span>白鹭</span></div>
 					<div class="summary">
 						<div class="summary-wrap">
 							<div class="fl title">
@@ -239,29 +239,17 @@
                             <dl>
                                     <dt>
                                         <div class="fl title">
-                                            <i>网络</i>
+                                            <i>电子书</i>
                                         </div>
                                     </dt>
-                                    <dd><a  class="{{isSelected('网络','移动3G')?'selected':''}}"
-                                            ng-click="selectSpecification('网络','移动3G')">
-                                            移动3G
+                                    <dd><a  class="{{isSelected('电子书','字数')?'selected':''}}"
+                                            ng-click="selectSpecification('电子书','字数')">
+                                            字数
                                             <span title="点击取消选择">&nbsp;</span>
                                         </a></dd>
-                                    <dd><a  class="{{isSelected('网络','移动4G')?'selected':''}}"
-                                            ng-click="selectSpecification('网络','移动4G')">
-                                            移动4G
-                                            <span title="点击取消选择">&nbsp;</span>
-                                        </a></dd>
-							</dl>
-                            <dl>
-                                    <dt>
-                                        <div class="fl title">
-                                            <i>机身内存</i>
-                                        </div>
-                                    </dt>
-                                    <dd><a  class="{{isSelected('机身内存','32G')?'selected':''}}"
-                                            ng-click="selectSpecification('机身内存','32G')">
-                                            32G
+                                    <dd><a  class="{{isSelected('电子书','类型')?'selected':''}}"
+                                            ng-click="selectSpecification('电子书','类型')">
+                                            类型
                                             <span title="点击取消选择">&nbsp;</span>
                                         </a></dd>
 							</dl>
@@ -280,7 +268,7 @@
 							<div class="fl">
 								<ul class="btn-choose unstyled">
 									<li>
-										<a href="cart.html" target="_blank" class="sui-btn  btn-danger addshopcar" ng-click="addToCart()">加入购物车</a>
+										<a target="_blank" class="sui-btn  btn-danger addshopcar" ng-click="addToCart()">加入购物车</a>
                                         {{specificationItems}}
 									</li>
 								</ul>
@@ -503,9 +491,9 @@
 						<div id="one" class="tab-pane active">
                                 <ul class="goods-intro unstyled">
                                     </ul>
-                                    <li>内存大小:12</li>
+                                    <li>连载:漫画</li>
                                     </ul>
-                                    <li>颜色:红</li>
+                                    <li>付费:免费</li>
 								</ul>
 								<div class="intro-detail">
 									<img src="img/_/intro01.png" />
@@ -514,13 +502,13 @@
 								</div>
 							</div>
 							<div id="two" class="tab-pane">
-								<p>	34</p>
+								<p>	好看不</p>
 							</div>
 							<div id="three" class="tab-pane">
-								<p>好看</p>
+								<p>没有</p>
 							</div>
 							<div id="four" class="tab-pane">
-								<p>免费</p>
+								<p>免费保养</p>
 							</div>
 							<div id="five" class="tab-pane">
 								<p>手机社区</p>

@@ -22,13 +22,13 @@
                       {
                 "id":1369295,
                 "title":"三国志 字数",
-                "price":0,
+                "price":20,
                 "spec": {"电子书":"字数"}
              } ,
              {
                 "id":1369296,
                 "title":"三国志 类型",
-                "price":0,
+                "price":10,
                 "spec": {"电子书":"类型"}
              } ,
         ];
@@ -268,7 +268,9 @@
 							<div class="fl">
 								<ul class="btn-choose unstyled">
 									<li>
-										<a href="cart.html" target="_blank" class="sui-btn  btn-danger addshopcar" ng-click="addToCart()">加入购物车</a>
+                                        <a ng-click="addToCart()" target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</a>
+                                    </li>
+                                </ul>
                                         {{specificationItems}}
 									</li>
 								</ul>
