@@ -98,6 +98,12 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.6.7" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.6.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.7" />
+          <element id="archive" name="youlexuan-user-interface-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="youlexuan-user-interface" />
+          </element>
+          <element id="archive" name="youlexuan-order-interface-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="youlexuan-order-interface" />
+          </element>
           <element id="archive" name="youlexuan-common-1.0-SNAPSHOT.jar">
             <element id="module-output" name="youlexuan-common" />
           </element>

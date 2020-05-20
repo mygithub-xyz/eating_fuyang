@@ -111,6 +111,8 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.6.7" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.7" level="project" />
+    <orderEntry type="module" module-name="youlexuan-user-interface" />
+    <orderEntry type="module" module-name="youlexuan-order-interface" />
     <orderEntry type="module" module-name="youlexuan-common" />
     <orderEntry type="library" name="Maven: cn.bestwu:fastdfs-client-java:1.27" level="project" />
     <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.3.3" level="project" />

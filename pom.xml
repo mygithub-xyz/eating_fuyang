@@ -32,6 +32,8 @@
         <module>youlexuan-cart-interface</module>
         <module>youlexuan-cart-service</module>
         <module>youlexuan-cart-web</module>
+        <module>youlexuan-order-interface</module>
+        <module>youlexuan-order-service</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
