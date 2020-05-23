@@ -13,9 +13,12 @@
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-order-service" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-page-service" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-page-web" />
+    <file type="web" url="file://$PROJECT_DIR$/youlexuan-pay-service" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-portal-web" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-search-service" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-search-web" />
+    <file type="web" url="file://$PROJECT_DIR$/youlexuan-seckill-service" />
+    <file type="web" url="file://$PROJECT_DIR$/youlexuan-seckill-web" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-sellergoods-service" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-shop-web" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-sms-service" />

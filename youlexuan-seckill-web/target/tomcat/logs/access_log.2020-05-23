@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [23/May/2020:23:13:10 +0800] "GET /seckillGoods/findAll.do HTTP/1.1" 200 1977 http-bio-9109-exec-1 22297
+0:0:0:0:0:0:0:1 - - [23/May/2020:23:13:10 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9109-exec-3 5
+0:0:0:0:0:0:0:1 - - [23/May/2020:23:14:18 +0800] "GET /seckillGoods/findOne.do?id=5 HTTP/1.1" 200 421 http-bio-9109-exec-5 98
+0:0:0:0:0:0:0:1 - - [23/May/2020:23:14:58 +0800] "GET /seckillGoods/findOne.do?id=1 HTTP/1.1" 200 414 http-bio-9109-exec-7 21

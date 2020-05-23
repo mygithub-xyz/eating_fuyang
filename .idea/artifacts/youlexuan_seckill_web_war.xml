@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="youlexuan-seckill-web:war">
+    <output-path>$PROJECT_DIR$/youlexuan-seckill-web/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>youlexuan-seckill-web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="youlexuan-seckill-web-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="youlexuan-seckill-web:war exploded" />
+    </root>
+  </artifact>
+</component>

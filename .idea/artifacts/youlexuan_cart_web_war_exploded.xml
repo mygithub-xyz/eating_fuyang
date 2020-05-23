@@ -116,6 +116,9 @@
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-keyvalue:1.2.11.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-oxm:4.3.15.RELEASE" />
           <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.25" />
+          <element id="archive" name="youlexuan-pay-interface-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="youlexuan-pay-interface" />
+          </element>
         </element>
       </element>
       <element id="directory" name="META-INF">

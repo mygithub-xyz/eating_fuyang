@@ -5,6 +5,7 @@ import com.offcn.entity.PageResult;
 import com.offcn.entity.Result;
 import com.offcn.order.service.OrderService;
 import com.offcn.pojo.TbOrder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,8 +50,11 @@ public class OrderController {
 	 */
 	@RequestMapping("/add")
 	public Result add(@RequestBody TbOrder order){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        order.setUserId(username);//当前登录人
+        order.setSourceType("2");//订单来源
 		try {
-			orderService.add(order);
+            orderService.add(order);
 			return new Result(true, "增加成功");
 		} catch (Exception e) {
 			e.printStackTrace();
