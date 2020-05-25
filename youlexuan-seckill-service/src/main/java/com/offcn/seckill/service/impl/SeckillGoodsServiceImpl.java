@@ -3,13 +3,18 @@ package com.offcn.seckill.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.offce.util.IdWorker;
 import com.offcn.entity.PageResult;
 import com.offcn.mapper.TbSeckillGoodsMapper;
 import com.offcn.pojo.TbSeckillGoods;
 import com.offcn.pojo.TbSeckillGoodsExample;
 import com.offcn.pojo.TbSeckillGoodsExample.Criteria;
+import com.offcn.pojo.TbSeckillOrder;
 import com.offcn.seckill.service.SeckillGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -103,5 +108,40 @@ public class SeckillGoodsServiceImpl implements SeckillGoodsService {
 		Page<TbSeckillGoods> page= (Page<TbSeckillGoods>)seckillGoodsMapper.selectByExample(example);		
 		return new PageResult(page.getTotal(), page.getResult());
 	}
-	
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    @Override
+    public List<TbSeckillGoods> findList() {
+        //获取秒杀商品列表
+        List<TbSeckillGoods> seckillGoodsList = redisTemplate.boundHashOps("seckillGoods").values();
+        if(seckillGoodsList==null || seckillGoodsList.size()==0){
+            TbSeckillGoodsExample example=new TbSeckillGoodsExample();
+            Criteria criteria = example.createCriteria();
+            criteria.andStatusEqualTo("1");//审核通过
+            criteria.andStockCountGreaterThan(0);//剩余库存大于0
+            criteria.andStartTimeLessThanOrEqualTo(new Date());//开始时间小于等于当前时间
+            criteria.andEndTimeGreaterThan(new Date());//结束时间大于当前时间
+            seckillGoodsList= seckillGoodsMapper.selectByExample(example);
+            //将商品列表装入缓存
+            System.out.println("将秒杀商品列表装入缓存");
+            for(TbSeckillGoods seckillGoods:seckillGoodsList){
+                redisTemplate.boundHashOps("seckillGoods").put(seckillGoods.getId(), seckillGoods);
+            }
+        }
+        return seckillGoodsList;
+    }
+
+    /**
+     * 查询redis中秒杀商品
+     * @param id
+     * @return
+     */
+
+    @Override
+    public TbSeckillGoods findOneFromRedis(Long id) {
+        return  (TbSeckillGoods)redisTemplate.boundHashOps("seckillGoods").get(id);
+    }
+
 }

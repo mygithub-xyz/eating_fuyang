@@ -20,7 +20,7 @@ import java.util.List;
 @RequestMapping("/seckillGoods")
 public class SeckillGoodsController {
 
-	@Reference
+	@Reference(timeout = 10000)
 	private SeckillGoodsService seckillGoodsService;
 	
 	/**
@@ -102,7 +102,7 @@ public class SeckillGoodsController {
 	
 		/**
 	 * 查询+分页
-	 * @param brand
+	 * @param seckillGoods
 	 * @param page
 	 * @param rows
 	 * @return
@@ -111,5 +111,22 @@ public class SeckillGoodsController {
 	public PageResult search(@RequestBody TbSeckillGoods seckillGoods, int page, int rows  ){
 		return seckillGoodsService.findPage(seckillGoods, page, rows);		
 	}
-	
+
+    /**
+     *查询当前秒杀商品列表
+     * @return
+     */
+    @RequestMapping("/findList")
+    public List<TbSeckillGoods> findList(){
+        return seckillGoodsService.findList();
+    }
+    /**
+     *查询当前redis秒杀商品
+     * @return
+     */
+    @RequestMapping("/findOneFromRedis")
+    public TbSeckillGoods findOneFromRedis(Long id){
+        return seckillGoodsService.findOneFromRedis(id);
+    }
+
 }

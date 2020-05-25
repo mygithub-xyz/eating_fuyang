@@ -18,13 +18,14 @@
         <module name="youlexuan-content-service" />
         <module name="youlexuan-pay-interface" />
         <module name="youlexuan-solr-util" />
+        <module name="youlexuan-sellergoods-interface" />
         <module name="youlexuan-sellergoods-service" />
         <module name="youlexuan-user-service" />
         <module name="youlexuan-seckill-web" />
         <module name="youlexuan-sms-service" />
         <module name="youlexuan-pay-service" />
         <module name="youlexuan-search-service" />
-        <module name="youlexuan-sellergoods-interface" />
+        <module name="youlexuan-task-service" />
         <module name="youlexuan-page-interface" />
         <module name="youlexuan-order-interface" />
         <module name="youlexuan-cart-interface" />
@@ -69,6 +70,7 @@
       <module name="youlexuan-shop-web" target="1.5" />
       <module name="youlexuan-sms-service" target="6" />
       <module name="youlexuan-solr-util" target="1.5" />
+      <module name="youlexuan-task-service" target="6" />
       <module name="youlexuan-user-interface" target="1.5" />
       <module name="youlexuan-user-service" target="6" />
       <module name="youlexuan-user-web" target="6" />

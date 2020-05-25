@@ -1,2 +1,5 @@
-com\offcn\seckill\controller\SeckillGoodsController.class
+com\offcn\seckill\controller\LoginController.class
+com\offcn\seckill\controller\PayController.class
 com\offcn\seckill\controller\SeckillOrderController.class
+com\offcn\seckill\service\UserDetailsServiceImpl.class
+com\offcn\seckill\controller\SeckillGoodsController.class
