@@ -1,2 +1,3 @@
 com\offcn\seckill\service\impl\SeckillGoodsServiceImpl.class
+com\offcn\utils\RedisLock.class
 com\offcn\seckill\service\impl\SeckillOrderServiceImpl.class

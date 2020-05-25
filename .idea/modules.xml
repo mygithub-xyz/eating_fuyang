@@ -30,6 +30,7 @@
       <module fileurl="file://$PROJECT_DIR$/youlexuan-shop-web/youlexuan-shop-web.iml" filepath="$PROJECT_DIR$/youlexuan-shop-web/youlexuan-shop-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-sms-service/youlexuan-sms-service.iml" filepath="$PROJECT_DIR$/youlexuan-sms-service/youlexuan-sms-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-solr-util/youlexuan-solr-util.iml" filepath="$PROJECT_DIR$/youlexuan-solr-util/youlexuan-solr-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/youlexuan-task-service/youlexuan-task-service.iml" filepath="$PROJECT_DIR$/youlexuan-task-service/youlexuan-task-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-user-interface/youlexuan-user-interface.iml" filepath="$PROJECT_DIR$/youlexuan-user-interface/youlexuan-user-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-user-service/youlexuan-user-service.iml" filepath="$PROJECT_DIR$/youlexuan-user-service/youlexuan-user-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/youlexuan-user-web/youlexuan-user-web.iml" filepath="$PROJECT_DIR$/youlexuan-user-web/youlexuan-user-web.iml" />

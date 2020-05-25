@@ -22,6 +22,7 @@
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-sellergoods-service" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-shop-web" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-sms-service" />
+    <file type="web" url="file://$PROJECT_DIR$/youlexuan-task-service" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-user-service" />
     <file type="web" url="file://$PROJECT_DIR$/youlexuan-user-web" />
   </component>

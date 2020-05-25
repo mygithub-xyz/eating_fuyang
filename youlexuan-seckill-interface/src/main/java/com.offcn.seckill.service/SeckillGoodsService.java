@@ -3,6 +3,8 @@ import java.util.List;
 import com.offcn.pojo.TbSeckillGoods;
 
 import com.offcn.entity.PageResult;
+import com.offcn.pojo.TbSeckillOrder;
+
 /**
  * 服务层接口
  * @author Administrator
@@ -57,5 +59,17 @@ public interface SeckillGoodsService {
 	 * @return
 	 */
 	public PageResult findPage(TbSeckillGoods seckill_goods, int pageNum,int pageSize);
+
+    /**
+     * 返回当前正在参与秒杀的商品
+     * @return
+     */
+    public List<TbSeckillGoods> findList();
+
+    /**
+     * 根据ID获取实体(从缓存中读取)
+     */
+    public TbSeckillGoods findOneFromRedis(Long id);
+
 	
 }

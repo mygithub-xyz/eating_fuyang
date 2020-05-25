@@ -39,6 +39,7 @@
         <module>youlexuan-seckill-interface</module>
         <module>youlexuan-seckill-service</module>
         <module>youlexuan-seckill-web</module>
+        <module>youlexuan-task-service</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
